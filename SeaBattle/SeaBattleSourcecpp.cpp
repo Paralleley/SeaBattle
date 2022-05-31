@@ -28,6 +28,7 @@ bool Boy::fin()
 	{
 		for (int j = 0; j < 10; j++)
 		{
+			cout << pole[i][j];
 			if (pole[i][j] == 2)
 			{
 				count += 1;
@@ -248,6 +249,43 @@ bool Igrok::proverka()
 			}
 		}
 	}
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			if (pole[i][j] == 2)
+			{
+				if ((i < 9) & (j < 9))
+				{
+					if (pole[i + 1][j + 1] == 2)
+					{
+						return true;
+					}
+				}
+				if ((i < 9) & (j > 0))
+				{
+					if (pole[i + 1][j - 1] == 2)
+					{
+						return true;
+					}
+				}
+				if ((i > 0) & (j < 9))
+				{
+					if (pole[i - 1][j + 1] == 2)
+					{
+						return true;
+					}
+				}
+				if ((i > 0) & (j > 0))
+				{
+					if (pole[i - 1][j - 1] == 2)
+					{
+						return true;
+					}
+				}
+			}
+		}
+	}
 	return false;
 }
 
@@ -256,10 +294,27 @@ void Igrok::hod_igroka(vector<vector<int>> protiv)
 	setlocale(LC_ALL, "Russian");
 	char z, x;
 	int i, j;
+	int count = 0;
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+		{
+			if (pole_vraga[i][j] == 3)
+			{
+				count += 1;
+			}
+		}
+	}
+	if (count == 10)
+	{
+		pole = { {9} };
+	}
 	cout << "¬ведите координаты" << '\n';
 	while (true)
 	{
+		cout << "¬ведите i" << '\n';
 		cin >> z;
+		cout << "¬ведите j" << '\n';
 		cin >> x;
 		if (not(isdigit(z) & isdigit(x)))
 		{

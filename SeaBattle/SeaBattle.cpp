@@ -21,13 +21,14 @@ int main()
 		b.hod(a);
 		if (a.fin())
 		{
-			cout << "Вы проиграли" << '\n';;
+			cout << "Вы проиграли" << '\n';
 			break;
 		}
-		else if (b.fin())
+		else if (a.pole[0][0] == 9)
 		{
-			cout << "Вы выиграли" << '\n';;
+			cout << "Вы выиграли" << '\n';
 			break;
 		}
 	}
+	return 0;
 }
